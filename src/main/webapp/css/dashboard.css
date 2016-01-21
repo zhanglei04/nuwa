@@ -1,0 +1,30 @@
+.ui-jqgrid .ui-jqgrid-titlebar {
+    padding: 0;
+}
+
+.ui-jqgrid .ui-jqgrid-sortable {
+    height: auto;
+}
+
+.ui-jqgrid .ui-userdata {
+    height: 38px;
+}
+/*无数据格式*/
+.norecords {
+    border-width: 2px !important;
+    display: none;
+    font-weight: bold;
+    left: 45%;
+    margin: 5px;
+    padding: 6px;
+    position: absolute;
+    text-align: center;
+    color: red;
+    top: 45%;
+    width: auto;
+    z-index: 102;
+}
+.alert{
+	padding:5px;
+	margin-bottom: 1px;
+}
