@@ -6,7 +6,7 @@
 </head>
 	<body>
 	<div class="container">
-      <form class="form-signin" method="post" action="${webroot}/rest/login/checkLoginUser.do">
+      <form class="form-signin" method="post" action="${webroot}/rest/login/checkLoginUser">
         <h2 class="form-signin-heading">四川省事业单位管理系统</h2>
         <label for="inputEmail" class="sr-only">用户名</label>
         <input type="text" id="userName" class="form-control" placeholder="用户名">

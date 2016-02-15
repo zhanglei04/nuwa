@@ -35,10 +35,10 @@
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
 								<ul class="nav nav-pills nav-stacked">
-									<li><a href="javascript:void(0);" addtabs="channelBank" id="channelBanks" title="岗位设置申报" url="${webroot}/rest/posimgr/index.do">岗位设置申报</a></li>
-									<li><a href="javascript:void(0);" addtabs="channelSupportRestriction" id="channelSupportRestrictions" title="通道银行支持" url="${webroot}/rest/config/channelSupportRestriction/index.do">通道银行支持</a></li>
-									<li><a href="javascript:void(0);" addtabs="weightChannelRuleConfig" id="weightChannelRuleConfigs" title="通道权值优先级规则配置" url="${webroot}/rest/config/weightChannelRuleConfig/index.do">通道权值优先级规则配置</a></li>
-									<li><a href="javascript:void(0);" addtabs="systemsetting" id="systemsettings" title="系统参数管理" url="${webroot}/rest/config/systemsetting/index.do">系统参数管理</a></li>
+									<li><a href="javascript:void(0);" addtabs="channelBank" id="channelBanks" title="岗位设置申报" url="${webroot}/rest/postmgr/index">岗位设置申报</a></li>
+									<li><a href="javascript:void(0);" addtabs="channelSupportRestriction" id="channelSupportRestrictions" title="通道银行支持" url="${webroot}/rest/config/channelSupportRestriction/index">通道银行支持</a></li>
+									<li><a href="javascript:void(0);" addtabs="weightChannelRuleConfig" id="weightChannelRuleConfigs" title="通道权值优先级规则配置" url="${webroot}/rest/config/weightChannelRuleConfig/index">通道权值优先级规则配置</a></li>
+									<li><a href="javascript:void(0);" addtabs="systemsetting" id="systemsettings" title="系统参数管理" url="${webroot}/rest/config/systemsetting/index">系统参数管理</a></li>
 								</ul>
 							</div>
 						</div>
@@ -58,7 +58,7 @@
 						<div id="collapseTwo" class="panel-collapse collapse">
 							<div class="panel-body">
 								<ul class="nav nav-pills nav-stacked">
-									<li><a href="javascript:void(0);" addtabs="tradeLog" id="tradeLogs" title="第三方交易日志" url="${webroot}/rest/tradeLog/index.do">第三方交易日志</a></li>
+									<li><a href="javascript:void(0);" addtabs="tradeLog" id="tradeLogs" title="第三方交易日志" url="${webroot}/rest/tradeLog/index">第三方交易日志</a></li>
 								</ul>
 							</div>
 						</div>
@@ -73,12 +73,12 @@
 						<div id="collapseThree" class="panel-collapse collapse">
 							<div class="panel-body">
 								<ul class="nav nav-pills nav-stacked">
-									<li><a href="javascript:void(0);" addtabs="batchPaymentOrderRepair" id="batchPaymentOrderRepair" title="批量支付订单修复" url="${webroot}/rest/maintain/batchPaymentOrderRepair/index.do">批量支付订单修复</a></li>
-									<li><a href="javascript:void(0);" addtabs="instantPaymentOrderRepair" id="instantPaymentOrderRepair" title="实时支付订单修复" url="${webroot}/rest/maintain/instantPaymentOrderRepair/index.do">实时支付订单修复</a></li>
-									<li><a href="javascript:void(0);" addtabs="batchPaymentRepair" id="batchPaymentRepair" title="批量支付修复" url="${webroot}/rest/maintain/batchPaymentRepair/index.do">批量支付修复</a></li>
-									<li><a href="javascript:void(0);" addtabs="instantPaymentRepair" id="instantPaymentRepair" title="实时支付修复" url="${webroot}/rest/maintain/instantPaymentRepair/index.do">实时支付修复</a></li>
-									<li><a href="javascript:void(0);" addtabs="batchPaymentResult" id="batchPaymentResults" title="获取批量支付结果" url="${webroot}/rest/batchPaymentResult/index.do">获取批量支付结果</a></li>
-									<li><a href="javascript:void(0);" addtabs="instantPaymentResult" id="instantPaymentResults" title="获取实时支付结果" url="${webroot}/rest/instantPaymentResult/index.do">获取实时支付结果</a></li>
+									<li><a href="javascript:void(0);" addtabs="batchPaymentOrderRepair" id="batchPaymentOrderRepair" title="批量支付订单修复" url="${webroot}/rest/maintain/batchPaymentOrderRepair/index">批量支付订单修复</a></li>
+									<li><a href="javascript:void(0);" addtabs="instantPaymentOrderRepair" id="instantPaymentOrderRepair" title="实时支付订单修复" url="${webroot}/rest/maintain/instantPaymentOrderRepair/index">实时支付订单修复</a></li>
+									<li><a href="javascript:void(0);" addtabs="batchPaymentRepair" id="batchPaymentRepair" title="批量支付修复" url="${webroot}/rest/maintain/batchPaymentRepair/index">批量支付修复</a></li>
+									<li><a href="javascript:void(0);" addtabs="instantPaymentRepair" id="instantPaymentRepair" title="实时支付修复" url="${webroot}/rest/maintain/instantPaymentRepair/index">实时支付修复</a></li>
+									<li><a href="javascript:void(0);" addtabs="batchPaymentResult" id="batchPaymentResults" title="获取批量支付结果" url="${webroot}/rest/batchPaymentResult/index">获取批量支付结果</a></li>
+									<li><a href="javascript:void(0);" addtabs="instantPaymentResult" id="instantPaymentResults" title="获取实时支付结果" url="${webroot}/rest/instantPaymentResult/index">获取实时支付结果</a></li>
 								</ul>
 							</div>
 						</div>

@@ -4,6 +4,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="webroot" value="${pageContext.request.contextPath}" />
 <meta charset="UTF-8">
+<script type="text/javascript" src="${webroot}/js/jquery.min.js"></script>
+<script type="text/javascript" src="${webroot}/js/jquery.form.js"></script>
+
 <link href="${webroot}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${webroot}/css/ui.jqgrid.css" rel="stylesheet">
 <link href="${webroot}/css/ui.jqgrid-bootstrap-ui.css" rel="stylesheet">

@@ -5,13 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.genesis.nuwa.vo.PostLevelDeclDetlVo;
+
 @Controller
-@RequestMapping("rest/posimgr")
-public class PosiMgrController {
+@RequestMapping("rest/postmgr")
+public class PostMgrController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/index")
 	public String index() {
-		return "posimgr/posiSetApply.jsp";
+		return "postmgr/postLevelDecl";
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/getTableDataTest")
@@ -22,6 +24,16 @@ public class PosiMgrController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/export")
 	public String export() {
+		return "nuwa/export.html";
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/savePostLevel")
+	public String savePostLevel(PostLevelDeclDetlVo postLevelDeclDetlVo) {
+		return "nuwa/export.html";
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/submitPostLevel")
+	public String submitPostLevel() {
 		return "nuwa/export.html";
 	}
 

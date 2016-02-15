@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LoginController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String login() {
-		return "login.jsp";
+		return "login";
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/checkLoginUser")
 	public String checkLoginUser() {
 
-		return "main.jsp";
+		return "main";
 
 	}
 
