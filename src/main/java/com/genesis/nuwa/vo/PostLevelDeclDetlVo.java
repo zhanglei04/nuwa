@@ -4,6 +4,9 @@
  */
 package com.genesis.nuwa.vo;
 
+import com.genesis.nuwa.common.code.DeclareStatus;
+import com.genesis.nuwa.common.code.OperateType;
+
 /**
  * @description 岗位等级申报VO类
  * @author Lei Zhang
@@ -11,6 +14,11 @@ package com.genesis.nuwa.vo;
  *
  */
 public class PostLevelDeclDetlVo {
+
+	/**
+	 * 岗位申请表主键
+	 */
+	private Integer postLevelDeclId;
 
 	/**
 	 * “双肩挑”岗位数
@@ -65,22 +73,7 @@ public class PostLevelDeclDetlVo {
 	/**
 	 * 七级及以下管理岗位数
 	 */
-	private Integer mgrPostL7BelowNum;
-
-	/**
-	 * 高级专业技术岗位数
-	 */
-	private Integer seniorTechPostNum;
-
-	/**
-	 * 中级专业技术岗位数
-	 */
-	private Integer juniorTechPostNum;
-
-	/**
-	 * 初级专业技术岗位数
-	 */
-	private Integer IntermediateTechPostNum;
+	private Integer mgrPostL7BNum;
 
 	/**
 	 * 一级专业技术岗位数
@@ -150,7 +143,7 @@ public class PostLevelDeclDetlVo {
 	/**
 	 * 十一及以下专业技术岗位数
 	 */
-	private Integer techPostL11BelowNum;
+	private Integer techPostL11BNum;
 
 	/**
 	 * 一级工勤岗位数
@@ -180,12 +173,16 @@ public class PostLevelDeclDetlVo {
 	/**
 	 * 四级及以下工勤岗位数
 	 */
-	private Integer workersPostL4BelowNum;
+	private Integer workersPostL4BNum;
 
 	/**
 	 * 普通工勤岗位数
 	 */
-	private Integer workersPostGeneralNum;
+	private Integer workersPostLGLNum;
+
+	private OperateType operateType;
+
+	private DeclareStatus status;
 
 	/**
 	 * @return the doubleTaskedPostNum
@@ -338,63 +335,18 @@ public class PostLevelDeclDetlVo {
 	}
 
 	/**
-	 * @return the mgrPostL7BelowNum
+	 * @return the mgrPostL7BNum
 	 */
-	public Integer getMgrPostL7BelowNum() {
-		return this.mgrPostL7BelowNum;
+	public Integer getMgrPostL7BNum() {
+		return this.mgrPostL7BNum;
 	}
 
 	/**
-	 * @param mgrPostL7BelowNum
-	 *            the mgrPostL7BelowNum to set
+	 * @param mgrPostL7BNum
+	 *            the mgrPostL7BNum to set
 	 */
-	public void setMgrPostL7BelowNum(Integer mgrPostL7BelowNum) {
-		this.mgrPostL7BelowNum = mgrPostL7BelowNum;
-	}
-
-	/**
-	 * @return the seniorTechPostNum
-	 */
-	public Integer getSeniorTechPostNum() {
-		return this.seniorTechPostNum;
-	}
-
-	/**
-	 * @param seniorTechPostNum
-	 *            the seniorTechPostNum to set
-	 */
-	public void setSeniorTechPostNum(Integer seniorTechPostNum) {
-		this.seniorTechPostNum = seniorTechPostNum;
-	}
-
-	/**
-	 * @return the juniorTechPostNum
-	 */
-	public Integer getJuniorTechPostNum() {
-		return this.juniorTechPostNum;
-	}
-
-	/**
-	 * @param juniorTechPostNum
-	 *            the juniorTechPostNum to set
-	 */
-	public void setJuniorTechPostNum(Integer juniorTechPostNum) {
-		this.juniorTechPostNum = juniorTechPostNum;
-	}
-
-	/**
-	 * @return the intermediateTechPostNum
-	 */
-	public Integer getIntermediateTechPostNum() {
-		return this.IntermediateTechPostNum;
-	}
-
-	/**
-	 * @param intermediateTechPostNum
-	 *            the intermediateTechPostNum to set
-	 */
-	public void setIntermediateTechPostNum(Integer intermediateTechPostNum) {
-		this.IntermediateTechPostNum = intermediateTechPostNum;
+	public void setMgrPostL7BNum(Integer mgrPostL7BNum) {
+		this.mgrPostL7BNum = mgrPostL7BNum;
 	}
 
 	/**
@@ -593,18 +545,18 @@ public class PostLevelDeclDetlVo {
 	}
 
 	/**
-	 * @return the techPostL11BelowNum
+	 * @return the techPostL11BNum
 	 */
-	public Integer getTechPostL11BelowNum() {
-		return this.techPostL11BelowNum;
+	public Integer getTechPostL11BNum() {
+		return this.techPostL11BNum;
 	}
 
 	/**
-	 * @param techPostL11BelowNum
-	 *            the techPostL11BelowNum to set
+	 * @param techPostL11BNum
+	 *            the techPostL11BNum to set
 	 */
-	public void setTechPostL11BelowNum(Integer techPostL11BelowNum) {
-		this.techPostL11BelowNum = techPostL11BelowNum;
+	public void setTechPostL11BNum(Integer techPostL11BNum) {
+		this.techPostL11BNum = techPostL11BNum;
 	}
 
 	/**
@@ -683,33 +635,77 @@ public class PostLevelDeclDetlVo {
 	}
 
 	/**
-	 * @return the workersPostL4BelowNum
+	 * @return the workersPostL4BNum
 	 */
-	public Integer getWorkersPostL4BelowNum() {
-		return this.workersPostL4BelowNum;
+	public Integer getWorkersPostL4BNum() {
+		return this.workersPostL4BNum;
 	}
 
 	/**
-	 * @param workersPostL4BelowNum
-	 *            the workersPostL4BelowNum to set
+	 * @param workersPostL4BNum
+	 *            the workersPostL4BNum to set
 	 */
-	public void setWorkersPostL4BelowNum(Integer workersPostL4BelowNum) {
-		this.workersPostL4BelowNum = workersPostL4BelowNum;
+	public void setWorkersPostL4BNum(Integer workersPostL4BNum) {
+		this.workersPostL4BNum = workersPostL4BNum;
 	}
 
 	/**
-	 * @return the workersPostGeneralNum
+	 * @return the workersPostLGLNum
 	 */
-	public Integer getWorkersPostGeneralNum() {
-		return this.workersPostGeneralNum;
+	public Integer getWorkersPostLGLNum() {
+		return this.workersPostLGLNum;
 	}
 
 	/**
-	 * @param workersPostGeneralNum
-	 *            the workersPostGeneralNum to set
+	 * @param workersPostLGLNum
+	 *            the workersPostLGLNum to set
 	 */
-	public void setWorkersPostGeneralNum(Integer workersPostGeneralNum) {
-		this.workersPostGeneralNum = workersPostGeneralNum;
+	public void setWorkersPostLGLNum(Integer workersPostLGLNum) {
+		this.workersPostLGLNum = workersPostLGLNum;
 	}
 
+	/**
+	 * @return the operateType
+	 */
+	public OperateType getOperateType() {
+		return this.operateType;
+	}
+
+	/**
+	 * @param operateType
+	 *            the operateType to set
+	 */
+	public void setOperateType(OperateType operateType) {
+		this.operateType = operateType;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public DeclareStatus getStatus() {
+		return this.status;
+	}
+
+	/**
+	 * @param status
+	 *            the status to set
+	 */
+	public void setStatus(DeclareStatus status) {
+		this.status = status;
+	}
+
+	/**
+	 * @return the postLevelDeclId
+	 */
+	public Integer getPostLevelDeclId() {
+		return this.postLevelDeclId;
+	}
+
+	/**
+	 * @param postLevelDeclId
+	 *            the postLevelDeclId to set
+	 */
+	public void setPostLevelDeclId(Integer postLevelDeclId) {
+		this.postLevelDeclId = postLevelDeclId;
+	}
 }

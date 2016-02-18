@@ -1,5 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ucredit.sps.mapper.IAccountBillMapper">
+<mapper namespace="com.genesis.nuwa.mapper.IPostLevelMapper">
+	<!-- 查询机构岗位等级现状 -->
+	<select id="findPostLevelStatus" resultType="PostLevelStatus">
+		SELECT
+			postType,
+			postLevel,
+			postNum
+		FROM 
+			m_post_level_status
+		WHERE
+			orgCode = #{orgCode}
+	</select>
+	
+	<!-- 查询岗位等级申请情况 -->
+	<select id="findPostLevelDeclDetl" resultType="PostLevelDeclDetl">
+		SELECT
+			pld.operateType,
+			pld.status,
+			pldd.postType,
+			pldd.postLevel,
+			pldd.applyNum,
+			pldd.postLevelDecl_id postLevelDeclId
+		FROM 
+			m_post_level_decl pld, m_post_level_decl_detl pldd
+		WHERE
+			pld.id = pldd.postLevelDecl_id AND
+			pld.orgCode = #{orgCode}
+			
+	</select>
+	
+	<!-- 增加岗位等级申请 -->
+	<insert id="addPostLevelDecl" parameterType="PostLevelDecl" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO 
+			m_post_level_decl (orgCode, operateType, status, createTime, createBy)
+		VALUES (
+			#{orgCode}, #{operateType}, #{status}, #{createTime}, #{createBy}
+		)
+	</insert>
+	
+	<!-- 更新岗位等级申请 -->
+	<update id="updatePostLevelDecl" parameterType="PostLevelDecl">
+    	UPDATE 
+			m_post_level_decl 
+		SET
+			modifyTimeLast = #{modifyTimeLast},
+			modifyByLast = #{modifyByLast}
+		WHERE 
+		  	orgCode = #{orgCode}
+    </update>
+	
+	<!-- 增加岗位等级申请详情 -->
+	<insert id="addPostLevelDeclDetlBatch" parameterType="java.util.List">
+		INSERT INTO 
+			m_post_level_decl_detl (postLevelDecl_id, postType, postLevel, applyNum)
+		VALUES
+		<foreach collection="list" item="postLevelDeclDetl" separator=",">
+			(
+			#{postLevelDeclDetl.postLevelDeclId},
+			#{postLevelDeclDetl.postType},
+			#{postLevelDeclDetl.postLevel},
+			#{postLevelDeclDetl.applyNum}
+			)
+		</foreach>
+	</insert>
+	
+    <!-- 更新岗位等级申请详情 -->
+    <update id="updatePostLevelDeclDetlBatch" parameterType="java.util.List">
+    	UPDATE 
+			m_post_level_decl_detl 
+		<trim prefix="SET" suffixOverrides=",">
+			<foreach collection="list" item="postLevelDeclDetl" index="index">
+				applyNum =  #{postLevelDeclDetl.applyNum}
+			</foreach>
+		</trim>	
+		WHERE 
+		<foreach collection="list" separator="or" item="postLevelDeclDetl">
+			postLevelDecl_id=#{postLevelDeclDetl.postLevelDeclId}           
+		</foreach> 
+    </update>
     
+    <!-- 删除岗位等级申请详情 -->
+    <delete id="delPostLevelDeclDetl" parameterType="java.lang.Integer">
+    	DELETE 
+    	FROM 
+			m_post_level_decl_detl 
+		WHERE 
+			postLevelDecl_id = #{postLevelDeclId}           
+
+    </delete>
 </mapper>

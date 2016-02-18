@@ -1,12 +1,12 @@
 /**
  * Copyright(c) 2011-2011 by LeiYiTech Inc. All Rights Reserved
  */
-package com.genesis.nuwa.commons;
+package com.genesis.nuwa.common.code;
 
 /**
  * 岗位等级申报状态
  *
- * @author Lei Zhang
+ * @author LeiZhang
  */
 public enum DeclareStatus {
 	/**

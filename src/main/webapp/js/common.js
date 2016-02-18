@@ -1,19 +1,39 @@
+$(function() {
+	// 提示框初始化
+	alertDialogInit();
+});
+
 /**
- * 格式化数据，主要针对枚举
- * 
- * @author heguojun
+ * 错误提示信息
  */
+function alertDialogInit() {
+	// 错误提示信息
+	$("#alert").dialog({
+		autoOpen : false,
+		modal : true,
+		width : 350,
+		buttons : {
+			"确认" : function() {
+				$(this).dialog("close");
+			}
+		}
+	});
+}
 /**
  * 寻找通道规则 下拉选框
  */
-var channelRuleTypeUrl = ctx + '/rest/enums/com.ucredit.sps.model.ChannelRuleType.do';
+var channelRuleTypeUrl = ctx
+		+ '/rest/enums/com.ucredit.sps.model.ChannelRuleType.do';
 /**
  * 组织机构
  */
-var organizationCodeUrl = ctx + '/rest/enums/com.ucredit.sps.model.OrganizationCode.do';
+var organizationCodeUrl = ctx
+		+ '/rest/enums/com.ucredit.sps.model.OrganizationCode.do';
 var tradeTypeUrl = ctx + '/rest/enums/com.ucredit.sps.model.TradeType.do';
-var batchPaymentResultUrl = ctx + '/rest/enums/com.ucredit.sps.model.BatchPaymentResult.do';
-var batchPaymentStatusUrl = ctx + '/rest/enums/com.ucredit.sps.model.BatchPaymentStatus.do';
+var batchPaymentResultUrl = ctx
+		+ '/rest/enums/com.ucredit.sps.model.BatchPaymentResult.do';
+var batchPaymentStatusUrl = ctx
+		+ '/rest/enums/com.ucredit.sps.model.BatchPaymentStatus.do';
 var operationUrl = ctx + '/rest/enums/com.ucredit.sps.model.Operation.do';
 var versionUrl = ctx + '/rest/enums/com.ucredit.sps.model.Version.do';
 /**
@@ -32,9 +52,12 @@ var tradeLogTypeUrl = ctx + '/rest/enums/com.ucredit.sps.model.TradeLogType.do';
 /**
  * 交易日志来源
  */
-var tradeLogSourceUrl = ctx + '/rest/enums/com.ucredit.sps.model.TradeLogSource.do';
-var systemSettingValueTypeUrl = ctx + '/rest/enums/com.ucredit.sps.model.SystemSettingValueType.do';
-var systemSettingKeyUrl = ctx + '/rest/enums/com.ucredit.sps.model.SystemSettingKey.do';
+var tradeLogSourceUrl = ctx
+		+ '/rest/enums/com.ucredit.sps.model.TradeLogSource.do';
+var systemSettingValueTypeUrl = ctx
+		+ '/rest/enums/com.ucredit.sps.model.SystemSettingValueType.do';
+var systemSettingKeyUrl = ctx
+		+ '/rest/enums/com.ucredit.sps.model.SystemSettingKey.do';
 /**
  * 交易类型（实时代扣、批量代扣、批量代付、充值、提现）
  */
@@ -56,40 +79,32 @@ function getData(object) {
  * 下拉选框校验是否选中
  * 
  * @param value
- *          下拉框值
+ *            下拉框值
  * @param info
- *          提示信息
+ *            提示信息
  * @returns {Array}
  */
 function checkSelect(value, info) {
 	if (value === "-1") {
-		return [
-			false, info + ": 此字段必需"
-		];
+		return [false, info + ": 此字段必需"];
 	} else {
-		return [
-			true, ""
-		];
+		return [true, ""];
 	}
 }
 /**
  * 长度校验
  * 
  * @param value
- *          字符串
+ *            字符串
  * @param info
- *          字段描述
+ *            字段描述
  * @returns {Array} 返回信息
  */
 function checkLength(value, info, length) {
 	if (value.length >= 1 && value.length <= 255) {
-		return [
-			true, "", ""
-		];
+		return [true, "", ""];
 	} else {
-		return [
-			false, info + ":字符长度只能在1~255之间", ""
-		];
+		return [false, info + ":字符长度只能在1~255之间", ""];
 	}
 }
 /**

@@ -1,19 +1,29 @@
 package com.genesis.nuwa.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.genesis.nuwa.service.IPostLevelDeclService;
 import com.genesis.nuwa.vo.PostLevelDeclDetlVo;
 
 @Controller
 @RequestMapping("rest/postmgr")
-public class PostMgrController {
+public class PostMgrController extends BaseController {
+
+	@Autowired
+	private IPostLevelDeclService postLevelDeclService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/index")
-	public String index() {
-		return "postmgr/postLevelDecl";
+	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView("postmgr/postLevelDecl");
+		PostLevelDeclDetlVo postLevelDeclDetlVo = this.postLevelDeclService
+				.findPostLevelStatusLast();
+		mav.addObject("postLevelDeclDetlVo", postLevelDeclDetlVo);
+		return mav;
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/getTableDataTest")
@@ -28,13 +38,19 @@ public class PostMgrController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/savePostLevel")
+	@ResponseBody
 	public String savePostLevel(PostLevelDeclDetlVo postLevelDeclDetlVo) {
-		return "nuwa/export.html";
+		try {
+			this.postLevelDeclService.saveOrUpdatePostLevelDecl(postLevelDeclDetlVo);
+			return BaseController.toJson(true, "操作成功");
+		} catch (Exception e) {
+			BaseController.logger.error("保存岗位申请失败", e);
+			return BaseController.toJson(false, "操作失败");
+		}
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/submitPostLevel")
 	public String submitPostLevel() {
 		return "nuwa/export.html";
 	}
-
 }

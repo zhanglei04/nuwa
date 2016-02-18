@@ -4,12 +4,34 @@
  */
 package com.genesis.nuwa.service;
 
+import com.genesis.nuwa.vo.PostLevelDeclDetlVo;
+
 /**
- * @description 
+ * @description
  * @author Lei Zhang
  * @date2016年2月15日
  *
  */
 public interface IPostLevelDeclService {
+	/**
+	 * 增加岗位申请
+	 *
+	 * @param postLevelDeclDetlVo
+	 */
+	public void addPostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo);
+
+	/**
+	 * 查询某机构的岗位等级最新情况
+	 *
+	 * @return
+	 */
+	public PostLevelDeclDetlVo findPostLevelStatusLast();
+
+	/**
+	 * 添加或修改岗位申请
+	 *
+	 * @param postLevelDeclDetlVo
+	 */
+	public void saveOrUpdatePostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo);
 
 }

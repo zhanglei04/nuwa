@@ -2,10 +2,12 @@
  * Copyright(c) 2011-2016 by LeiYiTech Inc.
  * All Rights Reserved
  */
-package com.genesis.nuwa.model;
+package com.genesis.nuwa.model.post;
 
-import java.sql.Timestamp;
 import java.util.Date;
+
+import com.genesis.nuwa.common.code.DeclareStatus;
+import com.genesis.nuwa.common.code.OperateType;
 
 /**
  * @description 岗位等级申报
@@ -81,9 +83,18 @@ public class PostLevelDecl {
 	private String provclPersnDeptApprPersn;
 
 	/**
+	 * 组织机构代码
+	 */
+	private String orgCode;
+	/**
 	 * 状态
 	 */
-	private String status;
+	private DeclareStatus status;
+
+	/**
+	 * 操作类型
+	 */
+	private OperateType operateType;
 
 	/**
 	 * 岗位设置方案
@@ -93,7 +104,7 @@ public class PostLevelDecl {
 	/**
 	 * 创建时间
 	 */
-	private Timestamp createTime;
+	private Date createTime;
 
 	/**
 	 * 创建人
@@ -103,7 +114,7 @@ public class PostLevelDecl {
 	/**
 	 * 最后修改时间
 	 */
-	private Timestamp modifyTimeLast;
+	private Date modifyTimeLast;
 
 	/**
 	 * 最后修改人
@@ -313,7 +324,7 @@ public class PostLevelDecl {
 	/**
 	 * @return the status
 	 */
-	public String getStatus() {
+	public DeclareStatus getStatus() {
 		return this.status;
 	}
 
@@ -321,7 +332,7 @@ public class PostLevelDecl {
 	 * @param status
 	 *            the status to set
 	 */
-	public void setStatus(String status) {
+	public void setStatus(DeclareStatus status) {
 		this.status = status;
 	}
 
@@ -343,7 +354,7 @@ public class PostLevelDecl {
 	/**
 	 * @return the createTime
 	 */
-	public Timestamp getCreateTime() {
+	public Date getCreateTime() {
 		return this.createTime;
 	}
 
@@ -351,7 +362,7 @@ public class PostLevelDecl {
 	 * @param createTime
 	 *            the createTime to set
 	 */
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
@@ -373,7 +384,7 @@ public class PostLevelDecl {
 	/**
 	 * @return the modifyTimeLast
 	 */
-	public Timestamp getModifyTimeLast() {
+	public Date getModifyTimeLast() {
 		return this.modifyTimeLast;
 	}
 
@@ -381,7 +392,7 @@ public class PostLevelDecl {
 	 * @param modifyTimeLast
 	 *            the modifyTimeLast to set
 	 */
-	public void setModifyTimeLast(Timestamp modifyTimeLast) {
+	public void setModifyTimeLast(Date modifyTimeLast) {
 		this.modifyTimeLast = modifyTimeLast;
 	}
 
@@ -413,5 +424,35 @@ public class PostLevelDecl {
 	 */
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	/**
+	 * @return the operateType
+	 */
+	public OperateType getOperateType() {
+		return this.operateType;
+	}
+
+	/**
+	 * @param operateType
+	 *            the operateType to set
+	 */
+	public void setOperateType(OperateType operateType) {
+		this.operateType = operateType;
+	}
+
+	/**
+	 * @return the orgCode
+	 */
+	public String getOrgCode() {
+		return this.orgCode;
+	}
+
+	/**
+	 * @param orgCode
+	 *            the orgCode to set
+	 */
+	public void setOrgCode(String orgCode) {
+		this.orgCode = orgCode;
 	}
 }

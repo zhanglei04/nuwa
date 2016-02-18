@@ -2,7 +2,11 @@
  * Copyright(c) 2011-2016 by LeiYiTech Inc.
  * All Rights Reserved
  */
-package com.genesis.nuwa.model;
+package com.genesis.nuwa.model.post;
+
+import com.genesis.nuwa.common.code.DeclareStatus;
+import com.genesis.nuwa.common.code.OperateType;
+import com.genesis.nuwa.common.code.PostType;
 
 /**
  * @description 岗位等级申报详情
@@ -18,14 +22,14 @@ public class PostLevelDeclDetl {
 	private Integer id;
 
 	/**
-	 * 岗位等级申报表
+	 * 岗位等级申报表ID
 	 */
-	private PostLevelDecl postLevelDecl;
+	private Integer postLevelDeclId;
 
 	/**
 	 * 岗位类别
 	 */
-	private String postType;
+	private PostType postType;
 
 	/**
 	 * 岗位等级
@@ -48,6 +52,16 @@ public class PostLevelDeclDetl {
 	private String remark;
 
 	/**
+	 * 操作类型
+	 */
+	private OperateType operateType;
+
+	/**
+	 * 状态
+	 */
+	private DeclareStatus status;
+
+	/**
 	 * @return the id
 	 */
 	public Integer getId() {
@@ -63,24 +77,24 @@ public class PostLevelDeclDetl {
 	}
 
 	/**
-	 * @return the postLevelDecl
+	 * @return the postLevelDeclId
 	 */
-	public PostLevelDecl getPostLevelDecl() {
-		return this.postLevelDecl;
+	public Integer getPostLevelDeclId() {
+		return this.postLevelDeclId;
 	}
 
 	/**
-	 * @param postLevelDecl
-	 *            the postLevelDecl to set
+	 * @param postLevelDeclId
+	 *            the postLevelDecl_id to set
 	 */
-	public void setPostLevelDecl(PostLevelDecl postLevelDecl) {
-		this.postLevelDecl = postLevelDecl;
+	public void setPostLevelDeclId(Integer postLevelDeclId) {
+		this.postLevelDeclId = postLevelDeclId;
 	}
 
 	/**
 	 * @return the postType
 	 */
-	public String getPostType() {
+	public PostType getPostType() {
 		return this.postType;
 	}
 
@@ -88,7 +102,7 @@ public class PostLevelDeclDetl {
 	 * @param postType
 	 *            the postType to set
 	 */
-	public void setPostType(String postType) {
+	public void setPostType(PostType postType) {
 		this.postType = postType;
 	}
 
@@ -150,5 +164,35 @@ public class PostLevelDeclDetl {
 	 */
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	/**
+	 * @return the operateType
+	 */
+	public OperateType getOperateType() {
+		return this.operateType;
+	}
+
+	/**
+	 * @param operateType
+	 *            the operateType to set
+	 */
+	public void setOperateType(OperateType operateType) {
+		this.operateType = operateType;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public DeclareStatus getStatus() {
+		return this.status;
+	}
+
+	/**
+	 * @param status
+	 *            the status to set
+	 */
+	public void setStatus(DeclareStatus status) {
+		this.status = status;
 	}
 }

@@ -1,12 +1,12 @@
 /**
  * Copyright(c) 2011-2011 by LeiYiTech Inc. All Rights Reserved
  */
-package com.genesis.nuwa.commons;
+package com.genesis.nuwa.common.code;
 
 /**
  * 操作类型
  *
- * @author Lei Zhang
+ * @author
  */
 public enum OperateType {
 	/**
@@ -57,7 +57,17 @@ public enum OperateType {
 	/**
 	 * 省人事厅审批拒绝
 	 */
-	PROVCL_APPROED_N("省人事厅审批拒绝");
+	PROVCL_APPROED_N("省人事厅审批拒绝"),
+
+	/**
+	 * 添加记录
+	 */
+	DB_INSERT("添加记录"),
+
+	/**
+	 * 更新记录
+	 */
+	DB_UPDATE("更新记录");
 
 	private final String string;
 
