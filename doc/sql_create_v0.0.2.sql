@@ -23,6 +23,7 @@ CREATE TABLE m_post_level_decl (
     modifyTimeLast datetime COMMENT '最后修改时间',
     modifyByLast varchar(25) COMMENT '最后修改人',
 	remark text  NULL COMMENT '备注',
+	processInstance_id  varchar(64) COMMENT '流程ID',
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='岗位等级申报';
 
@@ -64,6 +65,9 @@ CREATE TABLE m_user_info (
     id int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
     loginName varchar (25) COMMENT '登录用户名',
     loginPwd varchar (25) COMMENT '登录密码',
+    orgCode varchar(10) COMMENT '组织机构代码',
+    areaNumber varchar(6) COMMENT '行政区划',
+    candidateGroup varchar(100) NULL COMMENT '候选组',
     realName varchar (10) COMMENT '姓名',
     empNo varchar (10) COMMENT '员工编号',
     mobile varchar (11) COMMENT '员工编号',

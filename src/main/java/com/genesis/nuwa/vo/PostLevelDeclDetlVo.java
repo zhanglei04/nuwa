@@ -18,7 +18,7 @@ public class PostLevelDeclDetlVo {
 	/**
 	 * 岗位申请表主键
 	 */
-	private Integer postLevelDeclId;
+	private Integer postLevelDecl_Id;
 
 	/**
 	 * “双肩挑”岗位数
@@ -180,9 +180,20 @@ public class PostLevelDeclDetlVo {
 	 */
 	private Integer workersPostLGLNum;
 
+	/**
+	 * 操作类型
+	 */
 	private OperateType operateType;
 
+	/**
+	 * 岗位等级申报状态
+	 */
 	private DeclareStatus status;
+
+	/**
+	 * 流程实例ID
+	 */
+	private String processInstanceId;
 
 	/**
 	 * @return the doubleTaskedPostNum
@@ -695,17 +706,32 @@ public class PostLevelDeclDetlVo {
 	}
 
 	/**
-	 * @return the postLevelDeclId
+	 * @return the postLevelDecl_Id
 	 */
-	public Integer getPostLevelDeclId() {
-		return this.postLevelDeclId;
+	public Integer getPostLevelDecl_Id() {
+		return this.postLevelDecl_Id;
 	}
 
 	/**
-	 * @param postLevelDeclId
-	 *            the postLevelDeclId to set
+	 * @param postLevelDecl_Id
+	 *            the postLevelDecl_Id to set
 	 */
-	public void setPostLevelDeclId(Integer postLevelDeclId) {
-		this.postLevelDeclId = postLevelDeclId;
+	public void setPostLevelDecl_Id(Integer postLevelDecl_Id) {
+		this.postLevelDecl_Id = postLevelDecl_Id;
+	}
+
+	/**
+	 * @return the processInstanceId
+	 */
+	public String getProcessInstanceId() {
+		return this.processInstanceId;
+	}
+
+	/**
+	 * @param processInstanceId
+	 *            the processInstanceId to set
+	 */
+	public void setProcessInstanceId(String processInstanceId) {
+		this.processInstanceId = processInstanceId;
 	}
 }

@@ -21,7 +21,7 @@
 			pldd.postType,
 			pldd.postLevel,
 			pldd.applyNum,
-			pldd.postLevelDecl_id postLevelDeclId
+			pldd.postLevelDecl_id
 		FROM 
 			m_post_level_decl pld, m_post_level_decl_detl pldd
 		WHERE
@@ -44,10 +44,19 @@
     	UPDATE 
 			m_post_level_decl 
 		SET
+		   <if test="operateType != null">
+               operateType = #{operateType},
+           </if>
+		   <if test="status != null">
+               status = #{status},
+           </if>
+		   <if test="processInstance_id != null">
+               processInstance_id = #{processInstance_id},
+           </if>
 			modifyTimeLast = #{modifyTimeLast},
 			modifyByLast = #{modifyByLast}
 		WHERE 
-		  	orgCode = #{orgCode}
+		  	id = #{id}
     </update>
 	
 	<!-- 增加岗位等级申请详情 -->
@@ -57,7 +66,7 @@
 		VALUES
 		<foreach collection="list" item="postLevelDeclDetl" separator=",">
 			(
-			#{postLevelDeclDetl.postLevelDeclId},
+			#{postLevelDeclDetl.postLevelDecl_Id},
 			#{postLevelDeclDetl.postType},
 			#{postLevelDeclDetl.postLevel},
 			#{postLevelDeclDetl.applyNum}

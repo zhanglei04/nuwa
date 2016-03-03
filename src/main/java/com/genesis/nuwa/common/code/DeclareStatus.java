@@ -15,14 +15,9 @@ public enum DeclareStatus {
 	SAVED("已保存"),
 
 	/**
-	 * 提交
-	 */
-	SUBMITED("已提交"),
-
-	/**
 	 * 主管部门审批中
 	 */
-	COMPET_DEPT_APPRING("主管部门审批中"),
+	ADMIN_DEPT_APPRING("主管部门审批中"),
 
 	/**
 	 * 县人事部门审批中

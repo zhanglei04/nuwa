@@ -36,6 +36,11 @@ public class UserInfo {
 	 */
 	private String orgCode;
 
+	/**
+	 * 候选组
+	 */
+	private String candidateGroup;
+
 	private String mobile;
 	private String mail;
 	private boolean enabled = true;
@@ -207,4 +212,20 @@ public class UserInfo {
 	public void setOrgCode(String orgCode) {
 		this.orgCode = orgCode;
 	}
+
+	/**
+	 * @return the candidateGroup
+	 */
+	public String getCandidateGroup() {
+		return this.candidateGroup;
+	}
+
+	/**
+	 * @param candidateGroup
+	 *            the candidateGroup to set
+	 */
+	public void setCandidateGroup(String candidateGroup) {
+		this.candidateGroup = candidateGroup;
+	}
+
 }

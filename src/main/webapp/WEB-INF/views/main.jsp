@@ -36,7 +36,7 @@
 							<div class="panel-body">
 								<ul class="nav nav-pills nav-stacked">
 									<li><a href="javascript:void(0);" addtabs="channelBank" id="channelBanks" title="岗位设置申报" url="${webroot}/rest/postmgr/index">岗位设置申报</a></li>
-									<li><a href="javascript:void(0);" addtabs="channelSupportRestriction" id="channelSupportRestrictions" title="通道银行支持" url="${webroot}/rest/config/channelSupportRestriction/index">通道银行支持</a></li>
+									<li><a href="javascript:void(0);" addtabs="channelSupportRestriction" id="channelSupportRestrictions" title="岗位等级设置审核" url="${webroot}/rest/postmgr/postLevelAppro/index">岗位等级设置审核</a></li>
 									<li><a href="javascript:void(0);" addtabs="weightChannelRuleConfig" id="weightChannelRuleConfigs" title="通道权值优先级规则配置" url="${webroot}/rest/config/weightChannelRuleConfig/index">通道权值优先级规则配置</a></li>
 									<li><a href="javascript:void(0);" addtabs="systemsetting" id="systemsettings" title="系统参数管理" url="${webroot}/rest/config/systemsetting/index">系统参数管理</a></li>
 								</ul>

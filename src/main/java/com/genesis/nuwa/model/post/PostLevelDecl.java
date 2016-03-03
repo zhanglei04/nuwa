@@ -22,6 +22,8 @@ public class PostLevelDecl {
 	 */
 	private Integer id;
 
+	private String processInstance_id;
+
 	/**
 	 * 主管部门审批意见
 	 */
@@ -454,5 +456,20 @@ public class PostLevelDecl {
 	 */
 	public void setOrgCode(String orgCode) {
 		this.orgCode = orgCode;
+	}
+
+	/**
+	 * @return the processInstance_id
+	 */
+	public String getProcessInstance_id() {
+		return this.processInstance_id;
+	}
+
+	/**
+	 * @param processInstance_id
+	 *            the processInstance_id to set
+	 */
+	public void setProcessInstance_id(String processInstance_id) {
+		this.processInstance_id = processInstance_id;
 	}
 }

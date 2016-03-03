@@ -24,7 +24,7 @@ public class PostLevelDeclDetl {
 	/**
 	 * 岗位等级申报表ID
 	 */
-	private Integer postLevelDeclId;
+	private Integer postLevelDecl_Id;
 
 	/**
 	 * 岗位类别
@@ -74,21 +74,6 @@ public class PostLevelDeclDetl {
 	 */
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	/**
-	 * @return the postLevelDeclId
-	 */
-	public Integer getPostLevelDeclId() {
-		return this.postLevelDeclId;
-	}
-
-	/**
-	 * @param postLevelDeclId
-	 *            the postLevelDecl_id to set
-	 */
-	public void setPostLevelDeclId(Integer postLevelDeclId) {
-		this.postLevelDeclId = postLevelDeclId;
 	}
 
 	/**
@@ -195,4 +180,20 @@ public class PostLevelDeclDetl {
 	public void setStatus(DeclareStatus status) {
 		this.status = status;
 	}
+
+	/**
+	 * @return the postLevelDecl_Id
+	 */
+	public Integer getPostLevelDecl_Id() {
+		return this.postLevelDecl_Id;
+	}
+
+	/**
+	 * @param postLevelDecl_Id
+	 *            the postLevelDecl_Id to set
+	 */
+	public void setPostLevelDecl_Id(Integer postLevelDecl_Id) {
+		this.postLevelDecl_Id = postLevelDecl_Id;
+	}
+
 }

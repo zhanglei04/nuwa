@@ -103,6 +103,7 @@
 		<bcprov-jdk16.ver>1.46</bcprov-jdk16.ver>
 		<jibx-bind.ver>1.2.6</jibx-bind.ver>
 		<axiom-impl.ver>1.2.14</axiom-impl.ver>
+		<activiti.version>5.18.0</activiti.version>
 	</properties>
 
 	<profiles>
@@ -415,5 +416,32 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<!-- activit begin -->
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-engine</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-spring</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-image-generator</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-process-validation</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-bpmn-converter</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
+		<!-- activit end -->
 	</dependencies>
 </project>

@@ -17,9 +17,28 @@ public class PostMgrController extends BaseController {
 	@Autowired
 	private IPostLevelDeclService postLevelDeclService;
 
+	/**
+	 * 岗位等级设置申报主页
+	 *
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/index")
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView("postmgr/postLevelDecl");
+		PostLevelDeclDetlVo postLevelDeclDetlVo = this.postLevelDeclService
+				.findPostLevelStatusLast();
+		mav.addObject("postLevelDeclDetlVo", postLevelDeclDetlVo);
+		return mav;
+	}
+
+	/**
+	 * 主管部门-岗位等级审核主页
+	 *
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/postLevelAppro/index")
+	public ModelAndView postLevelApproMain() {
+		ModelAndView mav = new ModelAndView("postmgr/postLevelApproMain");
 		PostLevelDeclDetlVo postLevelDeclDetlVo = this.postLevelDeclService
 				.findPostLevelStatusLast();
 		mav.addObject("postLevelDeclDetlVo", postLevelDeclDetlVo);
@@ -37,6 +56,12 @@ public class PostMgrController extends BaseController {
 		return "nuwa/export.html";
 	}
 
+	/**
+	 * 保存岗位等级申请
+	 *
+	 * @param postLevelDeclDetlVo
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/savePostLevel")
 	@ResponseBody
 	public String savePostLevel(PostLevelDeclDetlVo postLevelDeclDetlVo) {
@@ -50,7 +75,14 @@ public class PostMgrController extends BaseController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/submitPostLevel")
-	public String submitPostLevel() {
-		return "nuwa/export.html";
+	@ResponseBody
+	public String submitPostLevel(PostLevelDeclDetlVo postLevelDeclDetlVo) {
+		try {
+			this.postLevelDeclService.submitPostLevelDecl(postLevelDeclDetlVo);
+			return BaseController.toJson(true, "操作成功");
+		} catch (Exception e) {
+			BaseController.logger.error("保存岗位申请失败", e);
+			return BaseController.toJson(false, "操作失败");
+		}
 	}
 }

@@ -14,13 +14,6 @@ import com.genesis.nuwa.vo.PostLevelDeclDetlVo;
  */
 public interface IPostLevelDeclService {
 	/**
-	 * 增加岗位申请
-	 *
-	 * @param postLevelDeclDetlVo
-	 */
-	public void addPostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo);
-
-	/**
 	 * 查询某机构的岗位等级最新情况
 	 *
 	 * @return
@@ -33,5 +26,11 @@ public interface IPostLevelDeclService {
 	 * @param postLevelDeclDetlVo
 	 */
 	public void saveOrUpdatePostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo);
+
+	/**
+	 * 提交岗位等级申请
+	 *
+	 */
+	public void submitPostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo);
 
 }

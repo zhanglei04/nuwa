@@ -8,10 +8,17 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.activiti.engine.IdentityService;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +48,14 @@ public class PostLevelDeclServiceImpl implements IPostLevelDeclService {
 
 	@Autowired
 	private IPostLevelMapper postLevelDeclMapper;
+	@Autowired
+	private IdentityService identityService;
+	@Autowired
+	private RuntimeService runtimeService;
+	@Autowired
+	private TaskService taskService;
+	@Autowired
+	private RepositoryService repositoryService;
 
 	/**
 	 * 新增或修改岗位申请
@@ -50,9 +65,9 @@ public class PostLevelDeclServiceImpl implements IPostLevelDeclService {
 	public void saveOrUpdatePostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo) {
 		OperateType operateType = postLevelDeclDetlVo.getOperateType();
 		if (null != operateType) {
-			this.updatePostLevelDecl(postLevelDeclDetlVo);
+			this.updatePostLevelDecl(postLevelDeclDetlVo, OperateType.SAVE);
 		} else {
-			this.addPostLevelDecl(postLevelDeclDetlVo);
+			this.addPostLevelDecl(postLevelDeclDetlVo, OperateType.SAVE, DeclareStatus.SAVED);
 		}
 	}
 
@@ -61,46 +76,117 @@ public class PostLevelDeclServiceImpl implements IPostLevelDeclService {
 	 *
 	 * @param postLevelDeclDetlVo
 	 */
-	@Override
-	public void addPostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo) {
+	public void addPostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo, OperateType operateType,
+			DeclareStatus declareStatus) {
 
 		UserInfo loginUser = SecurityUtils.getUserInfo();
 
 		PostLevelDecl postLevelDecl = new PostLevelDecl();
 		postLevelDecl.setOrgCode(loginUser.getOrgCode());
-		postLevelDecl.setOperateType(OperateType.SAVE);
-		postLevelDecl.setStatus(DeclareStatus.SAVED);
+		postLevelDecl.setOperateType(operateType);
+		postLevelDecl.setStatus(declareStatus);
 		postLevelDecl.setCreateBy(loginUser.getLoginName());
 		postLevelDecl.setCreateTime(new Date());
 		this.postLevelDeclMapper.addPostLevelDecl(postLevelDecl);
 
+		postLevelDeclDetlVo.setPostLevelDecl_Id(postLevelDecl.getId());
 		List<PostLevelDeclDetl> postLevelDeclDetls = PostLevelDeclServiceImpl
-				.buildPostLevelDeclDetls(postLevelDeclDetlVo, postLevelDecl);
+				.buildPostLevelDeclDetls(postLevelDeclDetlVo);
 		this.postLevelDeclMapper.addPostLevelDeclDetlBatch(postLevelDeclDetls);
 
 	}
 
 	/**
-	 * 增加岗位申请
+	 * 更新岗位等级申请
 	 *
 	 * @param postLevelDeclDetlVo
 	 */
-	public void updatePostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo) {
+	public void updatePostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo, OperateType operateType) {
 
 		UserInfo loginUser = SecurityUtils.getUserInfo();
 
 		PostLevelDecl postLevelDecl = new PostLevelDecl();
-		postLevelDecl.setOrgCode(loginUser.getOrgCode());
 		postLevelDecl.setModifyByLast(loginUser.getLoginName());
 		postLevelDecl.setModifyTimeLast(new Date());
-		postLevelDecl.setId(postLevelDeclDetlVo.getPostLevelDeclId());
+		postLevelDecl.setId(postLevelDeclDetlVo.getPostLevelDecl_Id());
+
+		if (operateType == OperateType.SUBMIT) {
+			postLevelDecl.setOperateType(operateType);
+			postLevelDecl.setStatus(DeclareStatus.ADMIN_DEPT_APPRING);
+			postLevelDecl.setProcessInstance_id(postLevelDeclDetlVo.getProcessInstanceId());
+		}
 		this.postLevelDeclMapper.updatePostLevelDecl(postLevelDecl);
 
-		this.postLevelDeclMapper.delPostLevelDeclDetl(postLevelDeclDetlVo.getPostLevelDeclId());
+		this.postLevelDeclMapper.delPostLevelDeclDetl(postLevelDeclDetlVo.getPostLevelDecl_Id());
 		List<PostLevelDeclDetl> postLevelDeclDetls = PostLevelDeclServiceImpl
-				.buildPostLevelDeclDetls(postLevelDeclDetlVo, postLevelDecl);
+				.buildPostLevelDeclDetls(postLevelDeclDetlVo);
 		this.postLevelDeclMapper.addPostLevelDeclDetlBatch(postLevelDeclDetls);
 
+	}
+
+	/**
+	 * 提交岗位等级申请
+	 *
+	 */
+	@Override
+	public void submitPostLevelDecl(PostLevelDeclDetlVo postLevelDeclDetlVo) {
+
+		UserInfo loginUser = SecurityUtils.getUserInfo();
+
+		// 用来设置启动流程的人员ID，引擎会自动把用户ID保存到activiti:initiator中
+		this.identityService.setAuthenticatedUserId(loginUser.getLoginName());
+
+		Map<String, Object> variables = new HashMap<>();
+		// variables.put("adminDepart", loginUser.getCandidateGroup());
+		variables.put("adminDepart", "雷伊科技主管");
+		OperateType operateType = postLevelDeclDetlVo.getOperateType();
+		if (null != operateType) {
+			ProcessInstance processInstance = this.runtimeService.startProcessInstanceByKey(
+					"postLevelDeclCounty", postLevelDeclDetlVo.getPostLevelDecl_Id() + "",
+					variables);
+
+			postLevelDeclDetlVo.setProcessInstanceId(processInstance.getId());
+			this.updatePostLevelDecl(postLevelDeclDetlVo, OperateType.SUBMIT);
+		} else {
+			this.addPostLevelDecl(postLevelDeclDetlVo, OperateType.SUBMIT,
+					DeclareStatus.ADMIN_DEPT_APPRING);
+			ProcessInstance processInstance = this.runtimeService.startProcessInstanceByKey(
+					"postLevelDeclCounty", postLevelDeclDetlVo.getPostLevelDecl_Id() + "",
+					variables);
+
+			PostLevelDecl postLevelDecl = new PostLevelDecl();
+			postLevelDecl.setProcessInstance_id(processInstance.getId());
+			postLevelDecl.setId(postLevelDeclDetlVo.getPostLevelDecl_Id());
+			this.postLevelDeclMapper.updatePostLevelDecl(postLevelDecl);
+		}
+	}
+
+	/**
+	 * 主管部门审批
+	 *
+	 * @param postLevelDeclDetlVo
+	 */
+	public void approveByAdminDepart(PostLevelDeclDetlVo postLevelDeclDetlVo) {
+
+		UserInfo loginUser = SecurityUtils.getUserInfo();
+
+		// 用来设置启动流程的人员ID，引擎会自动把用户ID保存到activiti:initiator中
+		this.identityService.setAuthenticatedUserId(loginUser.getLoginName());
+
+		Map<String, Object> variables = new HashMap<>();
+		variables.put("adminDepart", loginUser.getCandidateGroup());
+		ProcessInstance processInstance = this.runtimeService.startProcessInstanceByKey(
+				"postLevelDeclCounty", postLevelDeclDetlVo.getPostLevelDecl_Id() + "", variables);
+		String processInstanceId = processInstance.getId();
+
+		PostLevelDecl postLevelDecl = new PostLevelDecl();
+		postLevelDecl.setOperateType(OperateType.SUBMIT);
+		postLevelDecl.setStatus(DeclareStatus.ADMIN_DEPT_APPRING);
+		postLevelDecl.setProcessInstance_id(processInstanceId);
+		postLevelDecl.setModifyByLast(loginUser.getLoginName());
+		postLevelDecl.setModifyTimeLast(new Date());
+		postLevelDecl.setId(postLevelDeclDetlVo.getPostLevelDecl_Id());
+		this.postLevelDeclMapper.updatePostLevelDecl(postLevelDecl);
 	}
 
 	/**
@@ -111,7 +197,7 @@ public class PostLevelDeclServiceImpl implements IPostLevelDeclService {
 	 * @return
 	 */
 	private static List<PostLevelDeclDetl> buildPostLevelDeclDetls(
-			PostLevelDeclDetlVo postLevelDeclDetlVo, PostLevelDecl postLevelDecl) {
+			PostLevelDeclDetlVo postLevelDeclDetlVo) {
 
 		List<PostLevelDeclDetl> postLevelDeclDetls = new ArrayList<>();
 
@@ -129,9 +215,10 @@ public class PostLevelDeclServiceImpl implements IPostLevelDeclService {
 				Object fieldValueObj = getMothod.invoke(postLevelDeclDetlVo, new Object[] {});
 				if (null != fieldValueObj) {
 					postLevelDeclDetl = new PostLevelDeclDetl();
-					postLevelDeclDetl.setPostLevelDeclId(postLevelDecl.getId());
 					postLevelDeclDetl
-					.setPostLevel(PostLevelDeclServiceImpl.getPostLevel(fieldName));
+							.setPostLevelDecl_Id(postLevelDeclDetlVo.getPostLevelDecl_Id());
+					postLevelDeclDetl
+							.setPostLevel(PostLevelDeclServiceImpl.getPostLevel(fieldName));
 					postLevelDeclDetls.add(postLevelDeclDetl);
 					if (fieldName.indexOf("mgr") == 0) {
 						postLevelDeclDetl.setPostType(PostType.MGR_POST);
@@ -173,7 +260,7 @@ public class PostLevelDeclServiceImpl implements IPostLevelDeclService {
 			PostLevelDeclDetl pldd = postLevelDeclDetlList.get(0);
 			postLevelDeclDetlVo.setOperateType(pldd.getOperateType());
 			postLevelDeclDetlVo.setStatus(pldd.getStatus());
-			postLevelDeclDetlVo.setPostLevelDeclId(pldd.getPostLevelDeclId());
+			postLevelDeclDetlVo.setPostLevelDecl_Id(pldd.getPostLevelDecl_Id());
 
 			for (PostLevelDeclDetl postLevelDeclDetl : postLevelDeclDetlList) {
 				PostType postType = postLevelDeclDetl.getPostType();

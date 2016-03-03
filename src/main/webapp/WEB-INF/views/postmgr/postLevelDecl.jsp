@@ -12,7 +12,7 @@
 	<h3 align="center">四川省事业单位岗位设置审核（核准）表</h3>
 	<form id="applyPostLevel" method="post" action="${webroot}/rest/postmgr/savePostLevel">
 	<input type="hidden" name="operateType" value="${postLevelDeclDetlVo.operateType}">
-	<input type="hidden" name="postLevelDeclId" value="${postLevelDeclDetlVo.postLevelDeclId}">
+	<input type="hidden" name="postLevelDecl_Id" value="${postLevelDeclDetlVo.postLevelDecl_Id}">
 	<table class="table" style="width: 90%; margin:auto">
 		<tr>
 			<td class="td_first" style="vertical-align: middle;"><b>岗位总数</b></td>
@@ -64,16 +64,16 @@
 					</tr>
 					<tr>
 						<td class="td_bottom" width="6.42%"><i>比例</i></td>
-						<td class="td_bottom">23%</td>
-						<td class="td_bottom">12%</td>
-						<td class="td_bottom">23%</td>
-						<td class="td_bottom">23%</td>
-						<td class="td_bottom">23%</td>
-						<td class="td_bottom">23%</td>
-						<td class="td_bottom">23%</td>
-						<td class="td_bottom">23%</td>
-						<td class="td_bottom">23%</td>
-						<td class="td_bottom td_brcolor_white">23%</td>
+						<td class="td_bottom"><span id="mgrPostL2NumSpan"/></td>
+						<td class="td_bottom"><span id="mgrPostL3NumSpan"/></td>
+						<td class="td_bottom"><span id="mgrPostL4NumSpan"/></td>
+						<td class="td_bottom"><span id="mgrPostL5NumSpan"/></td>
+						<td class="td_bottom"><span id="mgrPostL6NumSpan"/></td>
+						<td class="td_bottom"><span id="mgrPostL7NumSpan"/></td>
+						<td class="td_bottom"><span id="mgrPostL8NumSpan"/></td>
+						<td class="td_bottom"><span id="mgrPostL9NumSpan"/></td>
+						<td class="td_bottom"><span id="mgrPostL10NumSpan"/></td>
+						<td class="td_bottom td_brcolor_white"><span id="mgrPostL7BNumSpan"/></td>
 					</tr>
 					<tr>
 						<td class="td_bottom td_bbcolor_white" width="6.42%"><i>数量</i></td>
@@ -103,15 +103,15 @@
 					</tr>
 					<tr>
 						<td class="td_bottom" width="6.42%"><i>比例</i></td>
-						<td class="td_bottom" colspan="7"></td>
-						<td class="td_bottom" colspan="3"></td>
-						<td class="td_bottom td_brcolor_white" colspan="4"></td>
+						<td class="td_bottom" colspan="7"><span id="seniorTechPostNumSpan"/></td>
+						<td class="td_bottom" colspan="3"><span id="middleTechPostNumSpan"/></td>
+						<td class="td_bottom td_brcolor_white" colspan="4"><span id="juniorTechPostNumSpan"/></td>
 					</tr>
 					<tr>
 						<td class="td_bottom" width="6.42%"><i>数量</i></td>
-						<td class="td_bottom td_padding" colspan="7"></td>
-						<td class="td_bottom td_padding" colspan="3"></td>
-						<td class="td_bottom td_brcolor_white td_padding" colspan="4"></td>
+						<td class="td_bottom td_padding" colspan="7"><span id="seniorTechPostNum"/></td>
+						<td class="td_bottom td_padding" colspan="3"><span id="middleTechPostNum"/></td>
+						<td class="td_bottom td_brcolor_white td_padding" colspan="4"><span id="juniorTechPostNum"/></td>
 					</tr>
 					<tr>
 						<td class="td_bottom" width="6.42%"><i>等级</i></td>
@@ -132,20 +132,20 @@
 					</tr>
 					<tr>
 						<td class="td_bottom" width="6.42%"><i>比例</i></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom td_brcolor_white"></td>
+						<td class="td_bottom"><span id="techPostL1NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL2NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL3NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL4NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL5NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL6NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL7NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL8NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL9NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL10NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL11NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL12NumSpan"/></td>
+						<td class="td_bottom"><span id="techPostL13NumSpan"/></td>
+						<td class="td_bottom td_brcolor_white"><span id="techPostL11BNumSpan"/></td>
 					</tr>
 					<tr>
 						<td class="td_bottom td_bbcolor_white" width="6.42%"><i>数量</i></td>
@@ -186,13 +186,13 @@
 					</tr>
 					<tr>
 						<td class="td_bottom" width="6.42%"><i>比例</i></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom"></td>
-						<td class="td_bottom td_brcolor_white"></td>
+						<td class="td_bottom"><span id="workersPostL1NumSpan"/></td>
+						<td class="td_bottom"><span id="workersPostL2NumSpan"/></td>
+						<td class="td_bottom"><span id="workersPostL3NumSpan"/></td>
+						<td class="td_bottom"><span id="workersPostL4NumSpan"/></td>
+						<td class="td_bottom"><span id="workersPostL5NumSpan"/></td>
+						<td class="td_bottom"><span id="workersPostLGLNumSpan"/></td>
+						<td class="td_bottom td_brcolor_white"><span id="workersPostL4BNumSpan"/></td>
 					</tr>
 					<tr>
 						<td class="td_bottom td_bbcolor_white" width="6.42%"><i>数量</i></td>
